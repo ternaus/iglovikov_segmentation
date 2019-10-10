@@ -22,8 +22,9 @@ class ApplySoftmaxToLogits(nn.Module):
     def __init__(self):
         super().__init__()
 
-    def forward(self, input):
-        return input.softmax(dim=1)
+    @staticmethod
+    def forward(x):
+        return x.softmax(dim=1)
 
 
 def get_args():

@@ -99,5 +99,5 @@ class TestSegmentationDataset(Dataset):
                 "features": tensor_from_rgb_image(normalized_image),
                 "pads": np.array(pads),
             }
-        else:
-            return {"image_id": image_path.stem, "features": tensor_from_rgb_image(normalized_image)}
+
+        return {"image_id": image_path.stem, "features": tensor_from_rgb_image(normalized_image)}
