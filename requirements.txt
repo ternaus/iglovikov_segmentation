@@ -1,0 +1,14 @@
+albumentations
+black
+catalyst
+flake8
+git+git://github.com/qubvel/segmentation_models.pytorch
+git+git://github.com/ternaus/iglovikov_helper_functions
+numpy
+pandas
+pytest
+pytorch_toolbelt
+scikit-learn
+torch
+tqdm
+wandb
