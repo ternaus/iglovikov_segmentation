@@ -20,7 +20,7 @@ class SegmentationDataset(Dataset):
     """
 
     def __init__(
-            self, samples: list, transform, class_id=None, num_samples=None, imread_lib="cv2", downsample_mask_factor=1
+        self, samples: list, transform, class_id=None, num_samples=None, imread_lib="cv2", downsample_mask_factor=1
     ):
         self.samples = samples
         self.transform = transform

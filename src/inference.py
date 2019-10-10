@@ -103,9 +103,7 @@ def main():
 
     with torch.no_grad():
         test_loader = DataLoader(
-            TestSegmentationDataset(
-                image_paths, test_aug, factor=config.pad_factor, imread_lib=config.imread_library
-            ),
+            TestSegmentationDataset(image_paths, test_aug, factor=config.pad_factor, imread_lib=config.imread_library),
             batch_size=args.batch_size,
             num_workers=args.num_workers,
             pin_memory=True,
