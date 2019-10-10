@@ -1,4 +1,4 @@
-# cityscapes multiclass example
+# Cityscapes multiclass example
 
 from pathlib import Path
 
@@ -66,7 +66,6 @@ model = smp.FPN(
     encoder_type, encoder_weights="imagenet", classes=num_classes, activation=None, final_upsampling=final_upsampling
 )
 
-test_parameters = dict(tiled_inference=False)
 pad_factor = 64
 imread_library = "cv2"  # can be cv2 or jpeg4py
 
@@ -125,11 +124,11 @@ test_augmentations = albu.Compose([normalization], p=1)
 
 scheduler = torch.optim.lr_scheduler.MultiStepLR(optimizer, milestones=[150, 200, 250], gamma=0.1)
 
-train_image_path = Path("data/cityscapes/train/images")
-train_mask_path = Path("data/cityscapes/train/masks")
+train_image_path = Path("data/train/images")
+train_mask_path = Path("data/train/masks")
 
-val_image_path = Path("data/cityscapes/val/images")
-val_mask_path = Path("data/cityscapes/val/masks")
+val_image_path = Path("data/val/images")
+val_mask_path = Path("data/val/masks")
 
 loss_jaccard = MulticlassJaccardLoss(
     classes=[x for x in range(0, num_classes)], from_logits=True, weight=None, reduction="elementwise_mean"
