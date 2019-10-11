@@ -7,7 +7,6 @@ import cv2
 import segmentation_models_pytorch as smp
 import torch
 from catalyst.contrib.optimizers.radam import RAdam
-from pytorch_toolbelt.losses import JointLoss, MulticlassJaccardLoss
 
 from src.loss import CCE
 
@@ -16,8 +15,6 @@ ignore_index = 255
 num_classes = 19
 
 encoder_type = "se_resnext101_32x4d"
-
-CLASS_NAMES = dict(zip([x for x in range(0, num_classes)], [x for x in range(0, num_classes)]))
 
 preprocess_parameters = smp.encoders.get_preprocessing_params(encoder_type)
 
@@ -76,10 +73,8 @@ optimizer = RAdam(
         # pre-trained weights with large gradients on training start
         {"params": model.encoder.parameters(), "lr": train_parameters["lr"] / 100},
     ],
-    weight_decay=1e-4,
+    weight_decay=1e-2,
 )
-
-alpha = 0.7
 
 normalization = albu.Normalize(mean=mean, std=std, p=1)
 
@@ -130,12 +125,7 @@ train_mask_path = Path("data/train/masks")
 val_image_path = Path("data/val/images")
 val_mask_path = Path("data/val/masks")
 
-loss_jaccard = MulticlassJaccardLoss(
-    classes=[x for x in range(0, num_classes)], from_logits=True, weight=None, reduction="elementwise_mean"
-)
-loss_cce = CCE(ignore_index=ignore_index)
-
-loss = JointLoss(loss_cce, loss_jaccard, alpha, 1 - alpha)
+loss = CCE(ignore_index=ignore_index)
 
 callbacks = []
 
