@@ -12,3 +12,4 @@ scikit-learn
 torch
 tqdm
 wandb
+lz4
