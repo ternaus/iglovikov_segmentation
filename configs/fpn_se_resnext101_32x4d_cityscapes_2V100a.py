@@ -63,8 +63,8 @@ model = smp.FPN(
     classes=num_classes,
     activation=None,
     final_upsampling=final_upsampling,
-    # decoder_merge_policy="cat",
-    # dropout=0.5,
+    decoder_merge_policy="cat",
+    dropout=0.5,
 )
 
 pad_factor = 64
