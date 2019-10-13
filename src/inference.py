@@ -122,7 +122,7 @@ def main():
 
             _, predictions = raw_predictions.max(1)
 
-            for i in range(args.batch_size):
+            for i in range(raw_predictions.shape[0]):
                 unpadded_mask = predictions[i].cpu().numpy()
 
                 if unpadded_mask.shape != (image_height, image_width):
