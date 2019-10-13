@@ -27,7 +27,7 @@ num_samples = None
 
 train_parameters = dict(
     lr=0.01,
-    train_batch_size=6 * num_gpu,
+    train_batch_size=5 * num_gpu,
     val_batch_size=num_gpu,
     fp16=False,
     num_epochs=300,
@@ -77,6 +77,7 @@ optimizer = SGD(
         # pre-trained weights with large gradients on training start
         {"params": model.encoder.parameters(), "lr": train_parameters["lr"] / 100},
     ],
+    train_parameters["lr"],
     weight_decay=1e-4,
     nesterov=True,
     momentum=0.9,
