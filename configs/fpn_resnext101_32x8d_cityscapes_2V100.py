@@ -29,7 +29,7 @@ num_samples = None
 
 train_parameters = dict(
     lr=0.01,
-    train_batch_size=5 * num_gpu,
+    train_batch_size=4 * num_gpu,
     val_batch_size=num_gpu,
     fp16=False,
     num_epochs=300,
