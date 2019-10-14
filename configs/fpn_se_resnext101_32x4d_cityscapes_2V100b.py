@@ -60,8 +60,13 @@ else:
     final_upsampling = 4
 
 model = smp.FPN(
-    encoder_type, encoder_weights="imagenet", classes=num_classes, activation=None, final_upsampling=final_upsampling,
-    dropout=0.5, decoder_merge_policy='cat'
+    encoder_type,
+    encoder_weights="imagenet",
+    classes=num_classes,
+    activation=None,
+    final_upsampling=final_upsampling,
+    dropout=0.5,
+    decoder_merge_policy="cat",
 )
 
 pad_factor = 64
