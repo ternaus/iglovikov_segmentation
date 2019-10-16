@@ -123,4 +123,4 @@ loss = CCE(ignore_index=ignore_index)
 
 callbacks = []
 
-logdir = f"runs/V100_{model.name}/baseline"
+logdir = f"runs/2gpu_{model.name}_a/baseline"
