@@ -28,15 +28,15 @@ num_gpu = 2
 num_samples = None
 
 train_parameters = dict(
-    lr=0.01,
-    train_batch_size=5 * num_gpu,
+    lr=0.001,
+    train_batch_size=10 * num_gpu,
     val_batch_size=num_gpu,
     fp16=False,
     num_epochs=300,
     height_crop_size=512,
     width_crop_size=512,
     ignore_index=ignore_index,
-    tta="lr",  # can be None, d4 or lr
+    tta=None,  # can be None, d4 or lr
     downsample_mask_factor=None,  # can be 4 for FPN
 )
 
@@ -77,12 +77,13 @@ optimizer = RAdam(
         {"params": model.decoder.parameters(), "lr": train_parameters["lr"]},
         # decrease lr for encoder in order not to permute
         # pre-trained weights with large gradients on training start
-        {"params": model.encoder.parameters(), "lr": train_parameters["lr"] / 100},
+        {"params": model.encoder.parameters(), "lr": train_parameters["lr"] / 10},
     ],
     weight_decay=1e-4,
 )
 
 normalization = albu.Normalize(mean=mean, std=std, p=1)
+
 
 train_augmentations = albu.Compose(
     [
@@ -97,19 +98,18 @@ train_augmentations = albu.Compose(
             p=1,
         ),
         albu.ShiftScaleRotate(
-            border_mode=cv2.BORDER_CONSTANT, rotate_limit=10, scale_limit=0, p=0.5, mask_value=ignore_index
+            border_mode=cv2.BORDER_CONSTANT, rotate_limit=20, scale_limit=0, p=0.5, mask_value=ignore_index
         ),
         albu.RandomBrightnessContrast(p=0.5),
         albu.RandomGamma(p=0.5),
-        albu.ImageCompression(quality_lower=20, quality_upper=100, p=0.5),
         albu.GaussNoise(p=0.5),
         albu.Blur(p=0.5),
-        albu.CoarseDropout(p=0.5, max_height=26, max_width=16),
-        albu.OneOf([albu.HueSaturationValue(p=0.5), albu.RGBShift(p=0.5)], p=0.5),
+        albu.HorizontalFlip(p=0.5),
         normalization,
     ],
     p=1,
 )
+
 
 val_augmentations = albu.Compose(
     [
@@ -135,4 +135,4 @@ loss = CCE(ignore_index=ignore_index)
 
 callbacks = []
 
-logdir = f"runs/V100c_{model.name}/baseline"
+logdir = f"runs/V100f_{model.name}/baseline"
