@@ -129,4 +129,4 @@ loss = CCE(ignore_index=ignore_index)
 
 callbacks = []
 
-logdir = f"runs/V100с_{model.name}/baseline"
+logdir = f"runs/V100d_{model.name}/baseline"
