@@ -115,7 +115,7 @@ val_augmentations = albu.Compose(
 
 test_augmentations = albu.Compose([normalization], p=1)
 
-scheduler = torch.optim.lr_scheduler.MultiStepLR(optimizer, milestones=[500, 5500, 580], gamma=0.1)
+scheduler = torch.optim.lr_scheduler.MultiStepLR(optimizer, milestones=[500, 550, 580], gamma=0.1)
 
 train_image_path = Path("data/train/images")
 train_mask_path = Path("data/train/masks")
