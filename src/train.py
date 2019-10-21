@@ -8,7 +8,7 @@ from iglovikov_helper_functions.config_parsing.from_py import py2cfg
 from pytorch_toolbelt.inference.tta import TTAWrapper, d4_image2mask, fliplr_image2mask
 from torch.utils.data import DataLoader
 from tqdm import tqdm
-
+import apex
 from src.dataset import SegmentationDataset
 
 
@@ -73,6 +73,9 @@ def main():
         model = TTAWrapper(model, fliplr_image2mask)
     elif config.train_parameters.tta == "d4":
         model = TTAWrapper(model, d4_image2mask)
+
+    if config.train_parameters.sync_bn:
+        model = apex.parallel.convert_syncbn_model(model)
 
     train_loader = DataLoader(
         SegmentationDataset(
