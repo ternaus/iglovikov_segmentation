@@ -119,4 +119,4 @@ loss = Focal(ignore_index=ignore_index)
 
 callbacks = []
 
-logdir = f"runs/2V100_{model.name}_a/baseline"
+logdir = f"runs/2V100_{model.name}_b/baseline"
