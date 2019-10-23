@@ -15,4 +15,6 @@
 * [fpn_resnext50_32x4d_2gpu_d](configs/fpn_resnext50_32x4d_cityscapes_2gpu_d.py) 0.68
 * [fpn_resnext50_32x4d_2gpu_e](configs/fpn_resnext50_32x4d_cityscapes_2gpu_e.py) 0.62
 * [fpn_resnext50_32x4d_2gpu_f](configs/fpn_resnext50_32x4d_cityscapes_2gpu_f.py) 0.68
+* [fpn_resnext50_32x4d_2V100_a](configs/fpn_resnext50_32x4d_cityscapes_2V100_a.py) 0.65
+* [fpn_resnext50_32x4d_2V100_b](configs/fpn_resnext50_32x4d_cityscapes_2V100_b.py) 0.61
 * [fpn_resnext101_32x8d_2V100](configs/fpn_resnext101_32x8d_2V100.py) 0.61
