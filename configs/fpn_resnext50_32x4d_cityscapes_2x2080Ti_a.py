@@ -5,10 +5,8 @@ from pathlib import Path
 import albumentations as albu
 import cv2
 import segmentation_models_pytorch as smp
-import torch
-from catalyst.contrib.optimizers.radam import RAdam
 from iglovikov_helper_functions.dl.pytorch.schedulers import PolylLR
-
+from torch.optim import Adam
 from src.loss import CCE
 
 ignore_index = 255
@@ -70,7 +68,7 @@ model = smp.FPN(
 pad_factor = 64
 imread_library = "cv2"  # can be cv2 or jpeg4py
 
-optimizer = RAdam(
+optimizer = Adam(
     [
         {"params": model.decoder.parameters(), "lr": train_parameters["lr"]},
         # decrease lr for encoder in order not to permute
