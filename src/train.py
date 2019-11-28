@@ -74,7 +74,7 @@ def main():
     elif config.train_parameters.tta == "d4":
         model = TTAWrapper(model, d4_image2mask)
 
-    if "sync_bn" in config.train_paramaters and config.train_parameters.sync_bn:
+    if "sync_bn" in config.train_parameters and config.train_parameters.sync_bn:
         model = apex.parallel.convert_syncbn_model(model)
 
     train_loader = DataLoader(
