@@ -110,7 +110,7 @@ val_augmentations = albu.Compose(
 
 test_augmentations = albu.Compose([normalization], p=1)
 
-schedule = torch.optim.lr_scheduler.LambdaLR(
+scheduler = torch.optim.lr_scheduler.LambdaLR(
     optimizer, lambda epoch: (1 - (epoch / train_parameters["num_epochs"]) ** 0.1)
 )
 
