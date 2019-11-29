@@ -19,3 +19,4 @@
 * [fpn_resnext50_32x4d_2V100_b](configs/fpn_resnext50_32x4d_cityscapes_2V100_b.py) 0.61
 * [fpn_resnext101_32x8d_2V100](configs/fpn_resnext101_32x8d_2V100.py) 0.61
 * [fpn_resnext50_32x4d_cityscapes_2x2080Ti_a](configs/fpn_resnext50_32x4d_cityscapes_2x2080Ti_a.py) 0.67
+* [fpn_resnext50_32x4d_cityscapes_2x2080Ti_b](configs/fpn_resnext50_32x4d_cityscapes_2x2080Ti_b.py) 0.62
