@@ -77,6 +77,7 @@ optimizer = SGD(
     ],
     weight_decay=1e-4,
     nesterov=True,
+    momentum=0.9,
 )
 
 normalization = albu.Normalize(mean=mean, std=std, p=1)
