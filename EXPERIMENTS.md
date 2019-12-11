@@ -21,3 +21,5 @@
 * [fpn_resnext50_32x4d_cityscapes_2x2080Ti_a](configs/fpn_resnext50_32x4d_cityscapes_2x2080Ti_a.py) 0.67
 * [fpn_resnext50_32x4d_cityscapes_2x2080Ti_b](configs/fpn_resnext50_32x4d_cityscapes_2x2080Ti_b.py) 0.62
 * [fpn_resnext50_32x4d_cityscapes_2x2080Ti_c](configs/fpn_resnext50_32x4d_cityscapes_2x2080Ti_c.py) 0.66
+* [fpn_resnext50_32x4d_cityscapes_2x2080Ti_d](configs/fpn_resnext50_32x4d_cityscapes_2x2080Ti_d.py) 0.58
+* [fpn_resnext50_32x4d_cityscapes_2x2080Ti_e](configs/fpn_resnext50_32x4d_cityscapes_2x2080Ti_e.py) 0.51
